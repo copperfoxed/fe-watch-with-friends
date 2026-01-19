@@ -4,6 +4,46 @@ The front end of the "Watch with frends" app, setup for vue.js with the NUXT fra
 
 ## setup
 
+### Step 1
+
+```bash
+git clone https://github.com/copperfoxed/fe-watch-with-friends.git
+cd fe-watch-with-friends
+```
+
+### Step 2 
+
+Check if you are on the correct branch by using the code
+
+```bash
+git branch
+```
+
+if not, use
+
+```bash
+git checkout "branch-name"
+```
+
+without the Quotation marks, if the branch doesnt exist, to create a new branch for the specified piece you're working on, use
+
+```bash
+git checkout -b "branch-name"
+```
+
+this will create a new branch for use
+
+### Step 3
+
+Make sure you are on the correct branch, and use 
+
+```bash
+git add .
+git commit -m "changes info"
+git push origin "branch-name"
+```
+
+if you attempt to push to main, your push will denied.
 ```bash
 git clone https://github.com/copperfoxed/fe-watch-with-friends.git
 cd fe-watch-with-friends
