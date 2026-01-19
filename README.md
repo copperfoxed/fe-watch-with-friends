@@ -44,3 +44,7 @@ git push origin "branch-name"
 ```
 
 if you attempt to push to main, your push will denied.
+```bash
+git clone https://github.com/copperfoxed/fe-watch-with-friends.git
+cd fe-watch-with-friends
+git checkout pull-branch
