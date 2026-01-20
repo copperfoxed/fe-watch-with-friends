@@ -48,3 +48,26 @@ git push origin "branch-name"
 ```
 
 if you attempt to push to main, your push will denied.
+
+## TMDB API
+
+https://developer.themoviedb.org/docs/getting-started
+
+### Environment Variables
+This project uses TMDB API credentials.
+These are stored in enironment variables.
+
+Template can be found in .env.example with required variables.
+
+```bash
+cp .env.example .env
+```
+
+Fill in your own keys.
+
+.env is gitignored and must not be committed
+
+
+
+
+
