@@ -57,7 +57,7 @@ https://developer.themoviedb.org/docs/getting-started
 This project uses TMDB API credentials.
 These are stored in enironment variables.
 
-Template can be found in .env.example with required variables.
+Template can be found in *.env.example* with required variables.
 
 ```bash
 cp .env.example .env
@@ -65,9 +65,8 @@ cp .env.example .env
 
 Fill in your own keys.
 
-.env is gitignored and must not be committed
+***.env* is gitignored and must not be committed**
 
-
-
-
-
+### Runtime Config
+- Credentials (Access Token and API Key) are loaded using `runtimeConfig` in *nuxt.config.js*
+- These credentials are not (and should not be) exposed to the client
