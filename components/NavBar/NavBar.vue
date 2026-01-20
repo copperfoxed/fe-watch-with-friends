@@ -1,49 +1,57 @@
+<script setup>
+  const userID = 1;
+</script>
+
 <template>
   <div>
     <header class="header">
       <nav class="navbar">
-        <a>HOME</a>
-        <a>MOVIES</a>
-        <a>USER</a>
+        <a href="/">
+          <img class="logo" src="../../assets/icons/icons8-home.svg" />
+        </a>
+        <h1>Watch with friends!</h1>
+        <a :href="`user/${userID}/profile`"> USER </a>
       </nav>
     </header>
   </div>
 </template>
 
 <style>
-  * {
-    background: rgb(41, 41, 41);
-    height: 30px;
+  .header {
+    background-color: #1a1919;
   }
 
   .navbar {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
+    gap: 20px;
+  }
+
+  .navbar h1 {
+    background-color: #222222;
+    padding: 10px 10px 10px;
+    border-radius: 10px;
   }
 
   .navbar a {
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: bold;
-    height: 20px;
-    width: 60px;
-    padding: 8px 16px;
-    margin: 0 4px;
-    background-color: rgb(66, 66, 66);
+    background-color: #444444;
     color: white;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+    align-content: center;
+    justify-content: center;
     text-decoration: none;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition:
-      background-color 0.3s ease,
-      transform 0.2s ease;
   }
 
-  .navbar a:hover {
-    background-color: rgb(39, 39, 39);
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  .navbar img {
+    border-radius: 10px;
+  }
+
+  .logo {
+    height: 40px;
+    width: 40px;
   }
 </style>
