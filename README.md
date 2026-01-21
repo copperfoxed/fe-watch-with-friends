@@ -81,3 +81,10 @@ The proxy:
 - Injects API Key and Access Token on the server side so tokens never reach client side
 - Returns response from TMDB to client
 - Passes request with pith and query paramaters to TMDB
+
+### Custom Fetcher
+Points to the proxy route:
+`plugins/tmdb.js`
+
+It creates a base URL  
+This is our server route rather than from TMDB, which keeps key and token safe
