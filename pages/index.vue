@@ -6,7 +6,9 @@
   <div class="ButtonStorage">
     <a class="primarybutton" href="group/search">Avaliable Groups</a>
     <p class="smallbutton" href="group/create">Create Group</p>
-    <NuxtLink class="primarybutton" to="media/search">Search Shows</NuxtLink>
+    <NuxtLink class="primarybutton" to="media/search">
+      Search Shows
+    </NuxtLink>
     <a class="primarybutton" :href="`user/${userID}/watchlist`">My Watchlist</a>
   </div>
 </template>
