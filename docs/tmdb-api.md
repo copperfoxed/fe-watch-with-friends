@@ -25,3 +25,12 @@ This is our server route rather than from TMDB, which keeps key and token safe
 `useTmdbFetch(path, options)` calls `useFetch(path, { ...options, $fetch: $tmdbApi })`
 
 This keeps components clean and consistent.
+
+## Fetching
+### Media Search
+The media search flow fetches and renders a list of tv shows.
+
+1. Clicking the Media Search button navigates the user to */media/search*
+2. When the page loads, useTmdbFetch is called with: */discover/tv*
+3. The returned data is passed into **MediaList** and **MediaCard**
+4. A list of media cards are rendered

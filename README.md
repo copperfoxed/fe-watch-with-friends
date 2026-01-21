@@ -68,13 +68,16 @@ Fill in your own keys.
 
 ***.env* is gitignored and must not be committed**
 
-TMDB Integration (Overview)
+### TMDB Integration
 
-TMDB requests are handled via Nuxt server routes so API credentials are not exposed to the client.
+TMDB requests are handled via Nuxt server routes. This approach keeps API credentials secure and ensures these are handled consistently.
 
 Client components fetch TMDB data using a custom useTmdbFetch composable.
 
 ### Example Usages
+
+**useTmdbFetch** can be used in pages and components to fetch data. Loading and error states are handled by Nuxt's **useFetch**
+
 - Popular films
 ```js
 const { data, pending, error } = useTmdbFetch("/movie/popular")
@@ -93,3 +96,4 @@ const { data, pending, error } = useTmdbFetch("/search/movie", {
   query: { query: "Vampire", page: 2 }
 })
 ```
+
