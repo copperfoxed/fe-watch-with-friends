@@ -51,13 +51,14 @@ if you attempt to push to main, your push will denied.
 
 ## TMDB API
 
+This project uses The Movie Database (TMDB) API.
+
 https://developer.themoviedb.org/docs/getting-started
 
 ### Environment Variables
-This project uses TMDB API credentials.
-These are stored in enironment variables.
+The API credentials are stored in enironment variables.
 
-Template can be found in *.env.example* with required variables.
+A template can be found in `.env.example` with the required variables.
 
 ```bash
 cp .env.example .env
@@ -67,24 +68,28 @@ Fill in your own keys.
 
 ***.env* is gitignored and must not be committed**
 
-### Runtime Config
-- Credentials (Access Token and API Key) are loaded using `runtimeConfig` in *nuxt.config.js*
-- These credentials are not (and should not be) exposed to the client
+TMDB Integration (Overview)
 
-### Catch All Route
-TMDB requests pass through a Nuxt server route:
-**`server/api/tmdb/[...path].js`**
+TMDB requests are handled via Nuxt server routes so API credentials are not exposed to the client.
 
-This allows calls to any endpoint for */api/api.themoviedb.org/3*
+Client components fetch TMDB data using a custom useTmdbFetch composable.
 
-The proxy:
-- Injects API Key and Access Token on the server side so tokens never reach client side
-- Returns response from TMDB to client
-- Passes request with pith and query paramaters to TMDB
+### Example Usages
+- Popular films
+```js
+const { data, pending, error } = useTmdbFetch("/movie/popular")
+```
 
-### Custom Fetcher
-Points to the proxy route:
-`plugins/tmdb.js`
+- Series details **(using append_to_response)**
+```js
+const { data, pending, error } = useTmdbFetch("/tv/1399", {
+  query: { append_to_response: "videos,credits,images" }
+})
+```
 
-It creates a base URL  
-This is our server route rather than from TMDB, which keeps key and token safe
+- Film search **(using query)**
+```js
+const { data, pending, error } = useTmdbFetch("/search/movie", {
+  query: { query: "Vampire", page: 2 }
+})
+```
