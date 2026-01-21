@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   returnedShow: { type: Object, required: true },
 })
@@ -10,15 +12,62 @@ const posterPath = computed (() => {
 </script>
 
 <template>
-    <li class='mediaCard'>
-        <img v-if="posterPath" :src="posterPath" :alt="returnedShow.name" />
-        <h2> {{ returnedShow.name }} </h2>
-        <p> {{ returnedShow.overview }}</p>
+    <li class='media-card'>
+        <img
+            class="media-card__image"
+            :src="posterPath"
+            :alt="returnedShow.name"
+            loading="lazy"
+        />
+
+        <div class="media-card__content">
+            <h3 class="media-card__title">{{ returnedShow.name }}</h3>
+            <p class="media-card__description">
+            {{ returnedShow.overview }}
+            </p>
+        </div>
     </li>
 </template>
 
-<style>
-  .mediaCard {
-    
-  }
+<style scoped>
+    .media-card {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #1f2937;
+        border-left: 4px solid #6366f1;
+
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .media-card__image {
+        width: 120px;
+        height: 180px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border-radius: 4px;
+    }
+
+    .media-card__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .media-card__title {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        color: #f9fafb;
+    }
+
+    .media-card__description {
+        margin: 0;
+        color: #d1d5db;
+        line-height: 1.4;
+    }
+
+    .media-card__description {
+        max-height: 4.2em;
+        overflow: hidden;
+    }
 </style>
