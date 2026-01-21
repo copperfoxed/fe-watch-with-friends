@@ -70,3 +70,14 @@ Fill in your own keys.
 ### Runtime Config
 - Credentials (Access Token and API Key) are loaded using `runtimeConfig` in *nuxt.config.js*
 - These credentials are not (and should not be) exposed to the client
+
+### Catch All Route
+TMDB requests pass through a Nuxt server route:
+**`server/api/tmdb/[...path].js`**
+
+This allows calls to any endpoint for */api/api.themoviedb.org/3*
+
+The proxy:
+- Injects API Key and Access Token on the server side so tokens never reach client side
+- Returns response from TMDB to client
+- Passes request with pith and query paramaters to TMDB
