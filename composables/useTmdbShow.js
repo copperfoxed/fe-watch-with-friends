@@ -20,3 +20,4 @@ export const useTmdbShow = (tmdb_id) => {
 };
 
 // can't get this to work
+// something about the data it fetches being unavalable on the return,
