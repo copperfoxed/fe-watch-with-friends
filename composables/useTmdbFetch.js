@@ -1,8 +1,8 @@
-export function useTmdbFetch (path, options = {}) {
-    const { $tmdbApi } = useNuxtApp()
+export function useTmdbFetch(path, options = {}) {
+  const { $tmdbApi } = useNuxtApp();
 
-    return useFetch (path, {
-        ...options,
-        $fetch: $tmdbApi
-    })
+  return useFetch(path, {
+    ...options,
+    $fetch: $tmdbApi,
+  });
 }
