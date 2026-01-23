@@ -26,28 +26,23 @@ export function useTmdbDetails({ id }) {
     }
   })
 
-    const platforms = computed(() => {
-    const gb = platformsResponse.data.value?.results?.GB
+  const platforms = computed(() => {
+    const p = platformsResponse.data.value
+    if (!p || !p.results || !p.results.GB ) return null
 
-    if (!gb) {
-      return {
-        streaming: [],
-        rent: [],
-        buy: [],
-        hasAny: false,
-      }
-    }
+    const { flatrate = [], rent = [], buy = [] } = p.results.GB
 
-    const streaming = gb.flatrate ?? []
-    const rent = gb.rent ?? []
-    const buy = gb.buy ?? []
+    const stream = flatrate[0] || null
+    const rental = rent [0] || null
+    const purchase = buy [0] || null
 
     return {
-      streaming,
-      rent,
-      buy,
-      hasAny:
-        streaming.length > 0 || rent.length > 0 || buy.length > 0,
+      streamLogo: stream ? `https://image.tmdb.org/t/p/w92${stream.logo_path}` : null,
+      streamName: stream?.provider_name || null,
+      rentLogo: rental ? `https://image.tmdb.org/t/p/w92${rental.logo_path}` : null,
+      rentName: rental?.provider_name || null,
+      buyLogo: purchase ? `https://image.tmdb.org/t/p/w92${purchase.logo_path}` : null,
+      buyName: purchase?.provider_name || null,
     }
   })
 
