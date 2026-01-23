@@ -1,4 +1,3 @@
-// composables/useTmdbDetails.js
 import { computed } from "vue"
 
 export function useTmdbDetails({ id }) {
@@ -22,7 +21,8 @@ export function useTmdbDetails({ id }) {
       overview: d.overview,
       numSeasons: d.number_of_seasons,
       numEpisodes: d.number_of_episodes,
-      trailerUrl: trailer ? `https://www.youtube.com/embed?v=${trailer.key}` : null,
+      trailerEmbedUrl: trailer ? `https://www.youtube.com/embed/${trailer}` : null,
+      trailerWatchUrl: trailer ? `https://www.youtube.com/watch?v=${trailer}` : null,
     }
   })
 
