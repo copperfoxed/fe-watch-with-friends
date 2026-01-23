@@ -1,14 +1,28 @@
 <script setup>
   const userID = 1;
+  const search = ref('')
 </script>
 
 <template>
   <div class="ButtonStorage">
     <a class="primarybutton" href="group/search">Avaliable Groups</a>
     <p class="smallbutton" href="group/create">Create Group</p>
-    <NuxtLink class="primarybutton" to="media/search">
-      Search Shows
-    </NuxtLink>
+    <UFieldGroup class="media-search">
+      <UInput
+        class="media-search-input"
+        v-model="search"
+        color="neutral" 
+        highlight 
+        variant="subtle" 
+        placeholder="Search..."
+      />
+      <UButton
+        class="media-search-button"
+        color="neutral"
+        variant="outline"
+        icon="i-lucide-search" 
+      />
+    </UFieldGroup>
     <a class="primarybutton" :href="`user/${userID}/watchlist`">My Watchlist</a>
   </div>
 </template>
@@ -73,5 +87,11 @@
 
   .primarybutton + .primarybutton {
     margin-top: 20px;
+  }
+
+  .media-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 </style>
