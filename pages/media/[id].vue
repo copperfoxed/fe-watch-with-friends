@@ -1,3 +1,3 @@
 <template>
-    <ItemDetails/>
+    <MediaItemDetails/>
 </template>
