@@ -22,7 +22,7 @@ export function useTmdbDetails({ id }) {
       overview: d.overview,
       numSeasons: d.number_of_seasons,
       numEpisodes: d.number_of_episodes,
-      trailerUrl: trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null,
+      trailerUrl: trailer ? `https://www.youtube.com/embed?v=${trailer.key}` : null,
     }
   })
 
