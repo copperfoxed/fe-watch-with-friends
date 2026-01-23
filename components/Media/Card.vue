@@ -13,7 +13,7 @@
 
 <template>
     <li class='media-card'>
-      <NuxtLink :to="`/media/${returnedShow.id}`">
+      <NuxtLink :to="`/media/${returnedShow.id}`" class="nuxt-link">
           <img
               class="media-card__image"
               :src="posterPath"
@@ -71,5 +71,10 @@
   .media-card__description {
     max-height: 4.2em;
     overflow: hidden;
+  }
+
+  .nuxt-link {
+    text-decoration: none;
+    color: inherit
   }
 </style>
