@@ -12,20 +12,23 @@
 </script>
 
 <template>
-  <li class="media-card">
-    <img
-      class="media-card__image"
-      :src="posterPath"
-      :alt="returnedShow.name"
-      loading="lazy" />
+    <li class='media-card'>
+      <NuxtLink :to="`/media/${returnedShow.id}`" class="nuxt-link">
+          <img
+              class="media-card__image"
+              :src="posterPath"
+              :alt="returnedShow.name"
+              loading="lazy"
+          />
 
-    <div class="media-card__content">
-      <h3 class="media-card__title">{{ returnedShow.name }}</h3>
-      <p class="media-card__description">
-        {{ returnedShow.overview }}
-      </p>
-    </div>
-  </li>
+          <div class="media-card__content">
+              <h3 class="media-card__title">{{ returnedShow.name }}</h3>
+              <p class="media-card__description">
+              {{ returnedShow.overview }}
+              </p>
+          </div>
+        </NuxtLink>
+    </li>
 </template>
 
 <style scoped>
@@ -68,5 +71,10 @@
   .media-card__description {
     max-height: 4.2em;
     overflow: hidden;
+  }
+
+  .nuxt-link {
+    text-decoration: none;
+    color: inherit
   }
 </style>
