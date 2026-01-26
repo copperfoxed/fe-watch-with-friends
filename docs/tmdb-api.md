@@ -19,13 +19,6 @@ Points to the proxy route:
 It creates a base URL  
 This is our server route rather than from TMDB, which keeps key and token safe
 
-### useTmdbFetch Composable
-`composables/useTmdbFetch.js` is a wrapper for `useFetch` which injects the custom fetcher:
-
-`useTmdbFetch(path, options)` calls `useFetch(path, { ...options, $fetch: $tmdbApi })`
-
-This keeps components clean and consistent.
-
 ## Fetching
 ### Media Search
 The media search flow fetches and renders a list of tv shows.
