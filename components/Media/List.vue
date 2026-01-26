@@ -1,18 +1,15 @@
 <script setup>
-  defineProps({
-    returnedShows: {
-      type: Array,
-      default: () => [],
-    },
-  });
+  defineProps ({
+    tvShows: { type: Array, required: true }
+  })
 </script>
 
 <template>
-  <ul class="media-list media-grid--list" aria-label="TV show results">
+  <ul class="media-list" aria-label="TV show results">
     <MediaCard
-      v-for="returnedShow in returnedShows"
-      :key="returnedShow.id"
-      :returnedShow="returnedShow" />
+      v-for="tvShow in tvShows"
+      :key="tvShow.id"
+      :tvShow="tvShow" />
   </ul>
 </template>
 
