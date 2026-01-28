@@ -11,6 +11,7 @@ const { data: rows, pending, error } = await useFetch(
     <template>
   <div class="page">
     <h1>My Watchlist</h1>
+<NuxtLink to="/group/create" class="item">Create Group</NuxtLink>
 
     <p v-if="pending">Loading...</p>
     <p v-else-if="error">Failed to load watchlist</p>
@@ -20,6 +21,10 @@ const { data: rows, pending, error } = await useFetch(
     </ul>
   </div>
 </template>
+
+<NuxtLink to="/group/create" class="item">
+  Create Group
+</NuxtLink>
 
 
     <p v-if="pending">Loading...</p>
