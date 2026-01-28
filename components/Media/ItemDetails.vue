@@ -1,32 +1,37 @@
 <script setup>
-const route = useRoute()
-const id = route.params.id
-const { details, platforms, pending, error } = useTmdbDetails({ id })
+  const props = defineProps({
+    id: {
+      type: Number,
+      required: true,
+    },
+  });
+
+  const { details, platforms, pending, error } = useTmdbDetails({
+    id: props.id,
+  });
 </script>
 
 <template>
-    <p v-if='pending'>Loading…</p>
-    <p v-else-if='error'>Uh Oh...something went wrong</p>
+  <p v-if="pending">Loading…</p>
+  <p v-else-if="error">Uh Oh...something went wrong</p>
 
-    <div v-else-if='details'>
-        <h2>{{ details.name }}</h2>
-        
-        <img
-            :src="details.posterUrl"
-            :alt="details.name"
-        />
+  <div v-else-if="details">
+    <h2>{{ details.name }}</h2>
 
-        <h3>Details</h3>
-        <p>{{ details.numSeasons }} seasons</p>
-        <p>{{ details.numEpisodes }} episodes</p>
+    <img :src="details.posterUrl" :alt="details.name" />
 
-        <a :href="details.trailerWatchUrl" target="_blank" rel="noopener">Watch Trailer on YouTube</a>
+    <h3>Details</h3>
+    <p>{{ details.numSeasons }} seasons</p>
+    <p>{{ details.numEpisodes }} episodes</p>
 
-        <h3>Summary</h3>
-        <p>{{ details.overview }}</p>
+    <a :href="details.trailerWatchUrl" target="_blank" rel="noopener"
+      >Watch Trailer on YouTube</a
+    >
 
+    <h3>Summary</h3>
+    <p>{{ details.overview }}</p>
 
-        <h3>Where to watch</h3>
-        <img :src="platforms.streamLogo" :alt="platforms.streamName"/>
-    </div>
+    <h3>Where to watch</h3>
+    <img :src="platforms.streamLogo" :alt="platforms.streamName" />
+  </div>
 </template>

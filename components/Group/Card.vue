@@ -8,10 +8,6 @@
     },
   });
 
-  // const { loading, error, showName, posterUrl } = useTmdbShow(
-  //   props.group.tmdb_id,
-  // );
-
   const { data, pending, error } = useTmdbFetch(`/tv/${props.group.tmdb_id}`);
   const loading = computed(() => pending.value);
   const showName = computed(() => data.value?.name ?? "Unknown");
@@ -29,7 +25,6 @@
 
         <div class="info">
           <h2 class="group-title">{{ group.group_name }}</h2>
-
           <p class="show-name">
             <strong>What we're watching: </strong>
             <span v-if="loading">Loading…</span>

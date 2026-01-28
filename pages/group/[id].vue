@@ -1,6 +1,5 @@
 <script setup>
   import { groups } from "../../.mockdata/mockGroups";
-  import { computed } from "vue";
   const route = useRoute();
 
   const group = computed(() =>
@@ -11,8 +10,8 @@
 
 <template>
   <div class="page">
-    <h1 v-if="group">{{ group.group_name }}</h1>
-    <h1 v-else>Group not found</h1>
+    <GroupSingleCard v-if="group" :group="group" />
+    <div v-else>Group not found</div>
   </div>
 </template>
 
