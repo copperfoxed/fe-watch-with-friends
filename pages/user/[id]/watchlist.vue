@@ -1,31 +1,19 @@
 <script setup>
 const { data: rows, pending, error } = await useFetch(
   "http://127.0.0.1:8000/api/watchlist"
-)
+);
+
+
+const exampleGroupId = 1;
 </script>
 
 <template>
   <div class="page">
     <h1>My Watchlist</h1>
-    
-    <template>
-  <div class="page">
-    <h1>My Watchlist</h1>
-<NuxtLink to="/group/create" class="item">Create Group</NuxtLink>
 
-    <p v-if="pending">Loading...</p>
-    <p v-else-if="error">Failed to load watchlist</p>
-
-    <ul v-else class="list">
-      ...
-    </ul>
-  </div>
-</template>
-
-<NuxtLink to="/group/create" class="item">
-  Create Group
-</NuxtLink>
-
+    <!-- Navigation -->
+    <NuxtLink to="/group/create" class="item">Create Group</NuxtLink>
+    <NuxtLink :to="`/group/${exampleGroupId}`" class="item">View Group</NuxtLink>
 
     <p v-if="pending">Loading...</p>
     <p v-else-if="error">Failed to load watchlist</p>
