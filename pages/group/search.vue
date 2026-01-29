@@ -1,5 +1,9 @@
 <script setup>
-  import { groups } from "../../.mockdata/mockGroups";
+  const {
+    data: groups,
+    pending,
+    error,
+  } = useFetch("http://127.0.0.1:8000/groups/");
 </script>
 
 <template>
