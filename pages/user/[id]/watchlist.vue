@@ -14,6 +14,8 @@ const exampleGroupId = 1;
     <!-- Navigation -->
     <NuxtLink to="/group/create" class="item">Create Group</NuxtLink>
     <NuxtLink :to="`/group/${exampleGroupId}`" class="item">View Group</NuxtLink>
+    <NuxtLink to="/group/search" class="item">Search Groups</NuxtLink>
+
 
     <p v-if="pending">Loading...</p>
     <p v-else-if="error">Failed to load watchlist</p>
