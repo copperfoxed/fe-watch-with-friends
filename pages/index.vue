@@ -1,4 +1,12 @@
 <script setup>
+  const router = useRouter ()
+  function mediaSearch ({ q, routeLink }) {
+    router.push ({
+      path: routeLink,
+      query: { q }
+    })
+  }
+
   const userID = 1;
 </script>
 
@@ -6,7 +14,10 @@
   <div class="ButtonStorage">
     <a class="primarybutton" href="group/search">Avaliable Groups</a>
     <p class="smallbutton" href="group/create">Create Group</p>
-    <SearchBar/>
+    <SearchBar
+      routeLink = "/media/search"
+      :searchFunction = "mediaSearch"
+    />
     <a class="primarybutton" :href="`user/${userID}/watchlist`">My Watchlist</a>
   </div>
 </template>

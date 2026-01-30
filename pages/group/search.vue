@@ -15,6 +15,11 @@ const filteredGroups = computed(() => {
     return name.includes(q) || id.includes(q);
   });
 });
+  const {
+    data: groups,
+    pending,
+    error,
+  } = useFetch("http://127.0.0.1:8000/groups/");
 </script>
 
 <template>

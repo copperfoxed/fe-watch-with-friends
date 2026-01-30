@@ -1,6 +1,7 @@
 <script setup>
-    const {searchFunction} = defineProps ({
-        searchFunction: {type: Function, required: true}
+    const { searchFunction, routeLink } = defineProps ({
+        searchFunction: {type: Function, required: true},
+        routeLink: {type: String, required: true}
     })
 
     const search = ref('')
@@ -8,7 +9,7 @@
     function onSearch (){
         const q = search.value.trim()
         if (!q) return
-        searchFunction(q)
+        searchFunction({ q, routeLink })
     }
 </script>
 
