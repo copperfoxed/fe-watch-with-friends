@@ -21,7 +21,6 @@ const filteredGroups = computed(() => {
     return name.includes(q) || id.includes(q);
   });
 });
-  
 </script>
 
 <template>
@@ -29,10 +28,7 @@ const filteredGroups = computed(() => {
     <h1>Available Groups</h1>
 
     <div v-if="pending">Loading...</div>
-    <div v-else-if="error">
-      Uh Oh! Could not load groups...
-      <pre> {{ error }}</pre>
-    </div>
+    <div v-else-if="error">Uh Oh! Could not load groups...</div>
 
     <div v-if="groups" class="item">
       <form @submit.prevent>
