@@ -1,32 +1,36 @@
 <!-- FILE: pages/group/search.vue -->
 <script setup>
 import { ref, computed } from "vue";
-import { groups as allGroups } from "../../.mockdata/mockGroups";
 
 const query = ref("");
 
-const filteredGroups = computed(() => {
-  const q = query.value.trim().toLowerCase();
-  if (!q) return allGroups;
+const {
+    data: groups,
+    pending,
+    error,
+  } = useFetch("http://127.0.0.1:8000/groups/");
 
-  return allGroups.filter((g) => {
+const filteredGroups = computed(() => {
+  const list = groups.value ?? [];
+  const q = query.value.trim().toLowerCase();
+  if (!q) return list;
+
+  return list.filter((g) => {
     const name = (g.group_name ?? "").toLowerCase();
     const id = String(g.group_id ?? "");
     return name.includes(q) || id.includes(q);
   });
 });
-  const {
-    data: groups,
-    pending,
-    error,
-  } = useFetch("http://127.0.0.1:8000/groups/");
 </script>
 
 <template>
   <div class="page">
     <h1>Available Groups</h1>
 
-    <div class="item">
+    <div v-if="pending">Loading...</div>
+    <div v-else-if="error">Uh Oh! Could not load groups...</div>
+
+    <div v-if="groups" class="item">
       <form @submit.prevent>
         <div class="field">
           <label for="q"><strong>search:</strong></label>
