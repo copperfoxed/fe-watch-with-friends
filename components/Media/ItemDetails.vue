@@ -32,6 +32,9 @@
     <p>{{ details.overview }}</p>
 
     <h3>Where to watch</h3>
-    <img :src="platforms.streamLogo" :alt="platforms.streamName" />
+    <img
+      v-if="platforms.streamLogo"
+      :src="platforms.streamLogo"
+      :alt="platforms.streamName" />
   </div>
 </template>

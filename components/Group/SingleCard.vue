@@ -1,4 +1,5 @@
 <script setup>
+  console.log(props.group);
   const props = defineProps({
     group: {
       type: Object,

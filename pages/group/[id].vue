@@ -1,16 +1,28 @@
 <script setup>
-  import { groups } from "../../.mockdata/mockGroups";
+  import { watch } from "vue";
   const route = useRoute();
+  const groupID = Number(route.params.id);
 
-  const group = computed(() =>
-    groups.find((g) => g.group_id === Number(route.params.id)),
-  );
-  console.log("group:", group.value);
+  const {
+    data: group,
+    pending,
+    error,
+  } = useFetch(`http://127.0.0.1:8000/groups/${groupID}`, {
+    headers: {
+      Accept: "application/json",
+    },
+  });
+  watch(group, (newGroup) => {
+    if (newGroup) {
+      console.log("Group loaded:", newGroup);
+    }
+  });
 </script>
 
 <template>
   <div class="page">
-    <GroupSingleCard v-if="group" :group="group" />
+    <div v-if="pending">Loading...</div>
+    <GroupSingleCard v-else-if="group" :group="group" />
     <div v-else>Group not found</div>
   </div>
 </template>
