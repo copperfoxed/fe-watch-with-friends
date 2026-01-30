@@ -35,7 +35,14 @@ const filteredGroups = computed(() => {
       </form>
     </div>
 
-    <GroupList :groups="filteredGroups" />
+    <ul class="list">
+      <li v-for="group in filteredGroups" :key="group.group_id" class="item">
+        <NuxtLink :to="`/group/${group.group_id}`" class="link">
+          <div><strong>{{ group.group_name }}</strong></div>
+          <div>Group ID: {{ group.group_id }}</div>
+        </NuxtLink>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -44,11 +51,19 @@ const filteredGroups = computed(() => {
   padding: 2rem;
 }
 
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .item {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   padding: 12px;
-  margin-bottom: 1rem;
 }
 
 .field {
@@ -62,4 +77,11 @@ input {
   border-radius: 8px;
   padding: 10px;
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 </style>
+
