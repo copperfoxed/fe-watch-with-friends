@@ -13,7 +13,8 @@
 
 <template>
   <p v-if="pending">Loading…</p>
-  <p v-else-if="error">Uh Oh...something went wrong</p>
+  <p v-else-if="error">Uh Oh...something went wrong <pre> {{ error }}</pre></p>
+  
 
   <div v-else-if="details">
     <h2>{{ details.name }}</h2>
@@ -31,10 +32,9 @@
     <h3>Summary</h3>
     <p>{{ details.overview }}</p>
 
-    <h3>Where to watch</h3>
-    <img
-      v-if="platforms.streamLogo"
-      :src="platforms.streamLogo"
-      :alt="platforms.streamName" />
+    <div v-if="platforms?.streamLogo">
+      <h3>Where to watch</h3>
+      <img :src="platforms.streamLogo" :alt="platforms.streamName" />
+    </div>
   </div>
 </template>
