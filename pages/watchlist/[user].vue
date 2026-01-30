@@ -1,10 +1,14 @@
 <script setup>
-const route = useRoute();
-const userId = computed(() => route.params.userId);
+  const route = useRoute();
+  const userId = computed(() => route.params.userId);
 
-const { data: rows, pending, error } = await useFetch(
-  () => `http://127.0.0.1:8000/api/${userId.value}/watchlist`
-);
+  const {
+    data: rows,
+    pending,
+    error,
+  } = await useFetch(
+    () => `http://127.0.0.1:8000/api/${userId.value}/watchlist`,
+  );
 </script>
 
 <template>
@@ -24,22 +28,22 @@ const { data: rows, pending, error } = await useFetch(
 </template>
 
 <style scoped>
-.page {
-  padding: 2rem;
-}
+  .page {
+    padding: 2rem;
+  }
 
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-.item {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  padding: 12px;
-}
+  .item {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    padding: 12px;
+  }
 </style>

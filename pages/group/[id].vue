@@ -2,6 +2,7 @@
   import { computed } from "vue";
 
   const route = useRoute();
+  const groupID = Number(route.params.id);
 
   const groupId = computed(() => Number(route.params.id));
 
