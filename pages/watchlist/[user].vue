@@ -1,21 +1,15 @@
 <script setup>
+const route = useRoute();
+const userId = computed(() => route.params.userId);
+
 const { data: rows, pending, error } = await useFetch(
-  "http://127.0.0.1:8000/api/watchlist"
+  () => `http://127.0.0.1:8000/api/${userId.value}/watchlist`
 );
-
-
-const exampleGroupId = 1;
 </script>
 
 <template>
   <div class="page">
     <h1>My Watchlist</h1>
-
-    <!-- Navigation -->
-    <NuxtLink to="/group/create" class="item">Create Group</NuxtLink>
-    <NuxtLink :to="`/group/${exampleGroupId}`" class="item">View Group</NuxtLink>
-    <NuxtLink to="/group/search" class="item">Search Groups</NuxtLink>
-
 
     <p v-if="pending">Loading...</p>
     <p v-else-if="error">Failed to load watchlist</p>
